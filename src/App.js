@@ -4,6 +4,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom' // router module
+
+import { store } from './redux/store.js';
 import HomePage from './containers/HomePage';
 import UserPage from './containers/UserPage';
 import SignInPage from './containers/SignInPage';
@@ -11,6 +13,7 @@ import ReservationsListPage from './containers/ReservationsListPage'
 import ReservationDetailPage from './containers/ReservationDetailPage'
 import BooksListPage from './containers/BooksListPage';
 import BookDetailPage from './containers/BookDetailPage';
+
 
 injectTapEventPlugin();
 
