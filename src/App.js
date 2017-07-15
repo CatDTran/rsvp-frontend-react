@@ -21,25 +21,28 @@ class App extends Component {
   render() {
     return (
     <Router>
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+    {/* This tag is needed for react-router */}
+      <MuiThemeProvider>
+      {/* This tag is needed for material-ui */}
+        <div className="App">
+          <div className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h2>Welcome to React</h2>
+          </div>
+          <p className="App-intro">
+            To get started, edit <code>src/App.js</code> and save to reload.
+          </p>
+
+        {/* root routes for the app*/}
+        <Route exact path="/" component={HomePage}/>
+        <Route exact path="/sign-in" component={SignInPage}/>
+        <Route exact path="/user" component={UserPage}/>
+        <Route exact path="/reservations-list" component={ReservationsListPage}/>
+        <Route exact path="/reservation-detail" component={ReservationDetailPage}/>
+        <Route exact path="/books-list" component={BooksListPage}/>
+        <Route exact path="/book-detail" component={BookDetailPage}/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-
-      {/* root routes for the app*/}
-      <Route exact path="/" component={HomePage}/>
-      <Route exact path="/sign-in" component={SignInPage}/>
-      <Route exact path="/user" component={UserPage}/>
-      <Route exact path="/reservations-list" component={ReservationsListPage}/>
-      <Route exact path="/reservation-detail" component={ReservationDetailPage}/>
-      <Route exact path="/books-list" component={BooksListPage}/>
-      <Route exact path="/book-detail" component={BookDetailPage}/>
-
-      </div>
+      </MuiThemeProvider>
     </Router>
     );
   }
