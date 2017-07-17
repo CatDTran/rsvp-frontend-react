@@ -1,6 +1,8 @@
-//import '../actions/actions';
+/*
+NOTE: This file contains reducer which turn actions into state update inside redux store
+*/
 
-export function appReducer (state, action) {
+module.exports = function (state, action) {
   switch (action.type) {
 
     case 'SET_ACTIVE_PAGE':

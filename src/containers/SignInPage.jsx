@@ -5,11 +5,16 @@ export default class SignInPage extends React.Component {
   constructor(props){
     super(props);
   }
+
+  signinSucessfull() {
+    // TODO: 
+  }
+
   render(){
     return (
       <div>
         {this.constructor.name}
-        <SignInForm></SignInForm>
+        <SignInForm signinSucessfull={this.signinSucessfull}></SignInForm>
       </div>
     );
   }

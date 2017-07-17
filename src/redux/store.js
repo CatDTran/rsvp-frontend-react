@@ -1,6 +1,7 @@
-import { createStore } from 'redux';
-import { appReducer } from './reducers/reducers';
+var redux = require('redux');
+var appReducer = require('./reducers/reducers');
 
+var exports = module.exports  // exporting this as a class
 var defaultState = {
   current_user: null,
   current_page: null,
@@ -10,4 +11,4 @@ var defaultState = {
   books: [ ]
 }
 
-var store = createStore(appReducer, defaultState);
+exports.store =  redux.createStore(appReducer, defaultState);

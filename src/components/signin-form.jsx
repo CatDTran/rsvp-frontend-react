@@ -4,9 +4,8 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const paperStyle = {
-
-}
+var store = require('../redux/store.js');
+var api = require('../api.js');
 
 export default class SignInForm extends React.Component {
 
@@ -25,17 +24,19 @@ export default class SignInForm extends React.Component {
   }
 
   handleSignin(event) {
-    // TODO: call api service to submit sign in form to server with form value: event.target.value
+    // Call api service to submit sign in form to server with form value: event.target.value
     var form_value = {email: event.target.email.value, password: event.target.password.value};
     event.preventDefault();
-    console.log(form_value);
+    api.postSigninForm(form_value);
+    // TODO: check if a user in redux store exist which means user is logged in. if it is, redirect to reservations page
+    
   }
 
   handleSignup(event) {
-    // TODO: call api service to submit sign up form to server with form value: event.target.value
+    // Call api service to submit sign up form to server with form value: event.target.value
     var form_value = {email: event.target.email.value, password: event.target.password.value};
     event.preventDefault();
-    console.log({email: event.target.email.value, password: event.target.password.value, reenter_password: event.target.reenter_password.value});
+    api.postSignupForm(form_value);
   }
 
   shouldDisabled(){
@@ -46,6 +47,7 @@ export default class SignInForm extends React.Component {
   }
 
   handleChange(event) {
+  // This function update this.state whenever the value inside an input field change (when user type inside an input field)
     console.log(event.target.id);
     switch (event.target.id) {
       case 'email':
@@ -63,12 +65,10 @@ export default class SignInForm extends React.Component {
 
   signinGoogle(event) {
     // TODO: call api service to signin with Google here
-    console.log('Signin with Google');
   }
 
   signinFacebook(event) {
     // TODO: call api service to signin with Facebook here
-    console.log('Signin with Facebook');
   }
 
 
@@ -78,8 +78,8 @@ export default class SignInForm extends React.Component {
 
         <h4>Sign in</h4>
         <form onSubmit={this.handleSignin}>
-          <TextField id="email" floatingLabelText='email' name='email' /><br/>
-          <TextField type="password" floatingLabelText='password' name='password' /><br/>
+          <TextField id="signin_email" floatingLabelText='email' name='email' /><br/>
+          <TextField id="signin_password" type="password" floatingLabelText='password' name='password' /><br/>
           <RaisedButton type="submit" label="Sign in" primary={true} /><br/>
         </form>
         <hr width="70%"/>

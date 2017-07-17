@@ -2,22 +2,23 @@
 NOTE: This file define Redux actions. These functions are called "actions creators",
 * they return actions which will be used by Redux reducers to update the application universal state (aka Redux Store).
 */
+var exports = module.exports  // exporting this as a class
 //------------------ Page actions -----------------------------//
-function setActivePage (activePageComponent) {
+exports.setActivePage = function (activePageComponent) {
   return {
     type: 'SET_ACTIVE_PAGE',
     current_page: activePageComponent
   }
 }
 
-function setCurrentReservation (reservationId) {
+exports.setCurrentReservation = function (reservationId) {
   return {
     type: 'SET_CURRENT_RESERVATION',
     id: reservationId
   }
 }
 
-function setCurrentBook (bookId) {
+exports.setCurrentBook = function (bookId) {
   return {
     type: 'SET_CURRENT_BOOK',
     id: bookId
@@ -25,14 +26,14 @@ function setCurrentBook (bookId) {
 }
 
 //------------------- User related actions -------------------//
-function setCurrentUser(currentUser) {
+exports.setCurrentUser = function (currentUser) {
   return {
     type: 'SET_CURRENT_USER',
     current_user: currentUser
   }
 }
 
-function updateUser (updatedUser) {
+exports.updateUser = function (updatedUser) {
   return {
     type: 'UPDATE_USER',
     info: updatedUser
@@ -40,14 +41,14 @@ function updateUser (updatedUser) {
 }
 
 //------------------ Reservation ralted actions --------------//
-function addReservation (newReservation) {
+exports.addReservation = function (newReservation) {
   return {
     type: 'ADD_RESERVATION',
     reservation: newReservation
   }
 }
 
-function updateReservation (reservationId, updatedReservation) {
+exports.updateReservation = function (reservationId, updatedReservation) {
   return {
     type: 'UPDATE_RESERVATION',
     id: reservationId,
@@ -55,14 +56,14 @@ function updateReservation (reservationId, updatedReservation) {
   }
 }
 //------------------- Book related actions -------------------//
-function addBook(newBook) {
+exports.addBook = function (newBook) {
   return {
     type: 'ADD_BOOK',
     book: newBook
   }
 }
 
-function updateBook (bookId, updatedBook) {
+exports.updateBook = function (bookId, updatedBook) {
   return {
     type: 'UPDATE_BOOK',
     id: bookId,
