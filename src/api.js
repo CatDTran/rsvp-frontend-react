@@ -16,13 +16,14 @@ api.postSigninForm = function postSigninForm (form) {
 // This funciton accept a signin form value {key1: value1, key2: value2, ...} and post that form to the server
   rp.post( {uri: apiBaseUrl + 'login', form: form, json: true} )
     .then(function (parsedUser) {
-    // Store the logged in user to redux store
+    // If request succedded Store the logged in user to redux store
       console.log(store.getState());
       let unsubscribe = store.subscribe( () => console.log(store.getState) ); //log the state averytime it changes
       store.dispatch(actions.setCurrentUser(parsedUser))
       console.log(store.getState());
     })
     .catch(function (err) {
+    // when an error occurs, the following code is executed
       console.log("Error occured" ,err);
   });
 }
