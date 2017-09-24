@@ -5,6 +5,7 @@ export default class ReservationsListPage extends React.Component {
     return (
       <div>
         {this.constructor.name}
+        {JSON.stringify(this.props.store)}
       </div>
     );
   }
