@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import * as actionsCreators from '../redux/actions/actions'
 
-export default class BookDetailPage extends React.Component {
+class BookDetailPage extends React.Component {
   render(){
     return (
       <div>
@@ -10,3 +12,9 @@ export default class BookDetailPage extends React.Component {
   }
 
 }
+
+function mapStateToProps (state){
+  return {state: state}
+}
+
+export default connect(mapStateToProps, actionsCreators)(BookDetailPage)

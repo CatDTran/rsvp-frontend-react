@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import * as actionsCreators from '../redux/actions/actions'
 
-export default class ReservationDetailPage extends React.Component {
+class ReservationDetailPage extends React.Component {
   render(){
     return (
       <div>
@@ -9,3 +11,9 @@ export default class ReservationDetailPage extends React.Component {
     );
   }
 }
+
+function mapStateToProps (state){
+  return {state: state}
+}
+
+export default connect(mapStateToProps, actionsCreators)(ReservationDetailPage)

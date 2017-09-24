@@ -1,7 +1,9 @@
 import React from 'react';
 import SignInForm from '../components/signin-form.jsx'
+import { connect } from 'react-redux'
+import * as actionsCreators from '../redux/actions/actions'
 
-export default class SignInPage extends React.Component {
+class SignInPage extends React.Component {
   constructor(props){
     super(props);
   }
@@ -19,3 +21,9 @@ export default class SignInPage extends React.Component {
     );
   }
 }
+
+function mapStateToProps (state){
+  return {state: state}
+}
+
+export default connect(mapStateToProps, actionsCreators)(SignInPage)

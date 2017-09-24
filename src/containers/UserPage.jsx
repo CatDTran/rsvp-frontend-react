@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-
 import * as actionsCreators from '../redux/actions/actions'
 
 class UserPage extends React.Component {
@@ -8,7 +7,7 @@ class UserPage extends React.Component {
     return (
       <div>
         <p>{this.constructor.name}</p>
-        {JSON.stringify(this.props.state)}
+        {JSON.stringify(this.props.state.current_user)}
       </div>
     );
   }
