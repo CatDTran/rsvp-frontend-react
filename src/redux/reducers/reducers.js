@@ -46,6 +46,11 @@ module.exports = function (state, action) {
       newState = Object.assign({}, state);
       return newState;
 
+    case 'STATUS_CODE':
+      newState = Object.assign({}, state);
+      newState.status_code = action.status_code;
+      return newState;
+
     default:
       return state;
   }

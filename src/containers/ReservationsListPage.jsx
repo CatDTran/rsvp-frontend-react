@@ -7,7 +7,7 @@ class ReservationsListPage extends React.Component {
     return (
       <div>
         {this.constructor.name}
-        {JSON.stringify(this.props.state)}
+        {JSON.stringify(this.props.state.reservations)}
       </div>
     );
   }

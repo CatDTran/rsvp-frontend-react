@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom' // route
 import { Redirect } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-//import { store } from './redux/store.js';
+import api from './api'
 import HomePage from './containers/HomePage';
 import UserPage from './containers/UserPage';
 import SignInPage from './containers/SignInPage';
@@ -29,6 +29,10 @@ class App extends Component {
     });
   }
 
+  componentWillMount(){
+    api.initializeState();
+  }
+
   componentDidMount(){
 
   }
@@ -46,10 +50,10 @@ class App extends Component {
             <div className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <h2>Welcome to React</h2>
-                <Link to="/">Home</Link>
-                <Link to="/sign-in">Sign in</Link>
-                <Link to="/user">User</Link>
-                <Link to="/reservations-list">reservations</Link>
+                <Link to="/">Home</Link> <span/>
+                <Link to="/sign-in">Sign in</Link> <span/>
+                <Link to="/user">User</Link> <span/>
+                <Link to="/reservations-list">reservations</Link> <span/>
             </div>
             {/*root routes for the app*/}
             <Route exact path="/" component={HomePage}/>

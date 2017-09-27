@@ -2,15 +2,27 @@ var rp = require('request-promise');
 var actions = require('./redux/actions/actions.js');
 var redux = require('./redux/store.js');
 var reduxStore = redux.store;
+var env = require('./config/env.js');
 
-const apiBaseUrl = 'http://localhost/api/';//'http://inkeepme.com/api'
-const appBaseUrl = 'http://localhost/';
+var apiBaseUrl = env.apiBaseUrl;
 
 var api = module.exports = {};  // Export this file as a module. DON"T change this
 api.store = reduxStore;
 //===================================================================================//
 //==================== Add more methods for this module below =======================//
 //===================================================================================//
+
+/* ******************************Initialize Redux state************************ */
+api.initializeState = function initializeState(){
+  // TODO: get logged in user info from server if available
+  rp.get( {uri: apiBaseUrl + 'users'})
+    .then(function(parsedUser){      
+      reduxStore.dispatch(actions.setCurrentUser(parsedUser));
+    })
+    .catch(function(err){
+      console.log("Error occurred", err);
+    });
+};
 
 /************************ Authentications stuff*********************************/
 api.postSigninForm = function postSigninForm (form) {
@@ -22,7 +34,9 @@ api.postSigninForm = function postSigninForm (form) {
     })
     .catch(function (err) {
     // when an error occurs, the following code is executed
-      console.log("Error occurred" ,err);
+      reduxStore.dispatch(actions.setStatusCode(err.statusCode))
+      console.log("Error occurred" ,reduxStore.getState().status_code);
+
   });
 }
 

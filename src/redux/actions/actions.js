@@ -70,3 +70,11 @@ exports.updateBook = function (bookId, updatedBook) {
     book: updatedBook
   }
 }
+
+//------------------ Status codes actions---------------------//
+exports.setStatusCode = function(statusCode){
+  return{
+    type: 'STATUS_CODE',
+    status_code: statusCode
+  }
+}

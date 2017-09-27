@@ -75,7 +75,7 @@ export default class SignInForm extends React.Component {
   render (){
     return (
       <div>
-
+        {/* Sign in form */}
         <h4>Sign in</h4>
         <form onSubmit={this.handleSignin}>
           <TextField id="signin_email" floatingLabelText='email' name='email' /><br/>
@@ -84,11 +84,13 @@ export default class SignInForm extends React.Component {
         </form>
         <hr width="70%"/>
 
+        {/* Social sin in options */}
         <h4>Or</h4>
         <RaisedButton label='Google Sign in' primary={true} onClick={this.signinGoogle}/><br/><br/>
         <RaisedButton label='Facebook Sign in' primary={true} onClick={this.signinFacebook}/>
         <hr width="70%"/>
 
+        {/* Sign up form */}
         <h4>Or sign up for an account</h4>
         <form onSubmit={this.handleSignup}>
           <TextField id="email" floatingLabelText='email' name='email' onChange={this.handleChange}/><br/>
