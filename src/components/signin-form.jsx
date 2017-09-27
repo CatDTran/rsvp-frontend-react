@@ -13,12 +13,12 @@ export default class SignInForm extends React.Component {
     super(props);
     this.state = {
       signin_form: {email: '', password: ''},
-      signup_form: {email: '', password: '', reenter_password: ''}
+      signup_form: {email: '', password: '', reenter_password: ''},
+      signup_disabled: true
     };
     this.handleSignin = this.handleSignin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.shouldDisabled = this.shouldDisabled.bind(this);
     this.signinGoogle = this.signinGoogle.bind(this);
     this.signinFacebook = this.signinFacebook.bind(this);
   }
@@ -39,28 +39,33 @@ export default class SignInForm extends React.Component {
     api.postSignupForm(form_value);
   }
 
-  shouldDisabled(){
-    // TODO: validate ignup form before enable 'Sign up' button here
-    // if ( this.state.signup_form.password !== this.state.signup_form.reenter_password)
-    //   return true;
-    // return false;
-  }
-
   handleChange(event) {
   // This function update this.state whenever the value inside an input field change (when user type inside an input field)
-    console.log(event.target.id);
+    var newState = Object.assign({}, this.state)
     switch (event.target.id) {
       case 'email':
-        this.setState({signup_form: {email: event.target.value, password: this.state.signup_form.password, reenter_password: this.state.signup_form.reenter_password} });
+        newState.signup_form.email = event.target.value;
+        this.setState(newState);
         break;
       case 'password':
-        this.setState({signup_form: {email: this.state.signup_form.password, password: event.target.value, reenter_password: this.state.signup_form.reenter_password} });
+        newState.signup_form.password = event.target.value;
+        this.setState(newState);
         break;
       case 'reenter_password':
-        this.setState({signup_form: {email: this.state.signup_form.password, password: this.state.signup_form.password, reenter_password: event.target.value} });
+        newState.signup_form.reenter_password = event.target.value;
+        this.setState(newState);
       default:
         break;
     }
+
+    if ( this.state.signup_form.password !== this.state.signup_form.reenter_password || this.state.signup_form.email === '') {
+      newState.signup_disabled = true;
+      this.setState(newState);
+    } else {
+      newState.signup_disabled = false;
+      this.setState(newState);
+    }
+    console.log(event.target.value, this.state.signup_form);
   }
 
   signinGoogle(event) {
@@ -95,9 +100,8 @@ export default class SignInForm extends React.Component {
         <form onSubmit={this.handleSignup}>
           <TextField id="email" floatingLabelText='email' name='email' onChange={this.handleChange}/><br/>
           <TextField id="password" floatingLabelText='password' name='password' onChange={this.handleChange}/><br/>
-          <TextField id="reenter-password" floatingLabelText='reenter password' name='reenter_password' onChange={this.handleChange}/><br/>
-          <RaisedButton type='submit' label="Sign up" name='' primary={true}
-            disabled={false} /><br/>
+          <TextField id="reenter_password" floatingLabelText='reenter password' name='reenter_password' onChange={this.handleChange}/><br/>
+          <RaisedButton ref="submit_button" type='submit' label="Sign up" name='' primary={true} disabled={this.state.signup_disabled} /><br/>
         </form>
 
       </div>
