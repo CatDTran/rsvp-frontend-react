@@ -57,7 +57,7 @@ export default class SignInForm extends React.Component {
       default:
         break;
     }
-
+    // Disable sign up button if password & reentered password fields not matched or email field is empty.
     if ( this.state.signup_form.password !== this.state.signup_form.reenter_password || this.state.signup_form.email === '') {
       newState.signup_disabled = true;
       this.setState(newState);
@@ -99,8 +99,8 @@ export default class SignInForm extends React.Component {
         <h4>Or sign up for an account</h4>
         <form onSubmit={this.handleSignup}>
           <TextField id="email" floatingLabelText='email' name='email' onChange={this.handleChange}/><br/>
-          <TextField id="password" floatingLabelText='password' name='password' onChange={this.handleChange}/><br/>
-          <TextField id="reenter_password" floatingLabelText='reenter password' name='reenter_password' onChange={this.handleChange}/><br/>
+          <TextField id="password" floatingLabelText='password' type='password' name='password' onChange={this.handleChange}/><br/>
+          <TextField id="reenter_password" floatingLabelText='reenter password' type='password' name='reenter_password' onChange={this.handleChange}/><br/>
           <RaisedButton ref="submit_button" type='submit' label="Sign up" name='' primary={true} disabled={this.state.signup_disabled} /><br/>
         </form>
 
