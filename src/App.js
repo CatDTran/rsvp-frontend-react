@@ -54,6 +54,7 @@ class App extends Component {
                 <Link to="/sign-in">Sign in</Link> <span/>
                 <Link to="/user">User</Link> <span/>
                 <Link to="/reservations-list">reservations</Link> <span/>
+                <Link to="/books-list">RSVP Books</Link> <span/>
             </div>
             {/*root routes for the app*/}
             <Route exact path="/" component={HomePage}/>

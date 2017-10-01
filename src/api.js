@@ -42,7 +42,15 @@ api.postSigninForm = function postSigninForm (form) {
 
 api.postSignupForm = function postSignupForm (form) {
 // This function accept a signup form {key1: value1, key2: value2, ...} and post that form to the server
-  console.log(form);
+rp.post({uri: apiBaseUrl + 'signup', form: form, json:true})
+  .then(function (parsedUser) {
+    reduxStore.dispatch(actions.setCurrentUser(parsedUser))
+  })
+  .catch(function(err){
+    reduxStore.dispatch(actions.setStatusCode(err.statusCode))
+    console.log("Error occured", reduxStore.getState().status_code);
+  });
+  
 }
 
 api.postSigninGoogle = function (){

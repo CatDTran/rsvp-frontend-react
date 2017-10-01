@@ -54,6 +54,7 @@ export default class SignInForm extends React.Component {
       case 'reenter_password':
         newState.signup_form.reenter_password = event.target.value;
         this.setState(newState);
+        break;
       default:
         break;
     }
@@ -100,7 +101,7 @@ export default class SignInForm extends React.Component {
         <form onSubmit={this.handleSignup}>
           <TextField id="email" floatingLabelText='email' name='email' onChange={this.handleChange}/><br/>
           <TextField id="password" floatingLabelText='password' type='password' name='password' onChange={this.handleChange}/><br/>
-          <TextField id="reenter_password" floatingLabelText='reenter password' type='password' name='reenter_password' onChange={this.handleChange}/><br/>
+          <TextField id="reenter_password" floatingLabelText='Please reenter password' type='password' name='reenter_password' onChange={this.handleChange}/><br/>
           <RaisedButton ref="submit_button" type='submit' label="Sign up" name='' primary={true} disabled={this.state.signup_disabled} /><br/>
         </form>
 
